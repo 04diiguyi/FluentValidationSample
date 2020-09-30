@@ -15,7 +15,13 @@ namespace FluentValidationSample
             var personValidator = new PersonValidator();
             var result = personValidator.Validate(person);
 
-            Console.WriteLine(result);
+            if (!result.IsValid)
+            {
+                Console.WriteLine(result);
+            }
+
+            // Check it, if fails, throw exception
+            personValidator.ValidateAndThrow(person);
         }
     }
 
